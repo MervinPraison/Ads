@@ -22,6 +22,7 @@ def hello_world():
 
 @app.route('/url/<path:url>', methods=['GET', 'POST'])
 def api_url(url):
+    print(url)
     if url:
         url = "https://"+url
     else:
