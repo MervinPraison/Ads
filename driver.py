@@ -25,7 +25,7 @@ def main():
     for frame in iframe:
         print(frame.size)
         print(frame.text)
-        print(frame.screenshot_as_png('/var/www/html/adsdetector'))
+        # print(frame.screenshot_as_png('/var/www/html/adsdetector')) Option to save as PNG
     print(driver.title)
     driver.quit()
 
