@@ -20,7 +20,7 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/url/<url>')
+@app.route('/url/<path:url>', methods=['GET', 'POST']')
 def api_url(url):
     if url:
         url = "https://"+url
