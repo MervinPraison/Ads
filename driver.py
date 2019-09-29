@@ -9,7 +9,7 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 
-driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)  # Optional argument, if not specified will search path.
+driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)  # Optional argument, if not specified will search path.
 driver.get('https://praison.com/django-task-browser-app/');
 iframe = driver.find_element_by_tag_name('iframe')
 print(iframe)
@@ -30,7 +30,7 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
 
-        driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)   
+        driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)   
 
     def test_search_in_python_org(self):
         driver = self.driver
