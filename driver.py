@@ -1,27 +1,34 @@
 import time
 from selenium import webdriver
-
 from selenium.webdriver.chrome.options import Options
-chrome_options = Options()
-chrome_options.add_argument("--disable-extensions")
-
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-
-driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)  # Optional argument, if not specified will search path.
-driver.get('https://praison.com/django-task-browser-app/');
-iframe = driver.find_elements_by_tag_name('iframe')
-for frame in iframe:
-    print(frame.size)
-    print(frame.text)
-    print(frame.screenshot_as_png('/var/www/html/adsdetector'))
-print(driver.title)
-driver.quit()
-
 import unittest
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+
+def main():
+    chrome_options = Options()
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)  # Optional argument, if not specified will search path.
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-u', '--url', required=False, help="Please provide URL")
+    args = parser.parse_args()
+    if args.url:
+        url = args.url
+    else:
+        url = 'https://praison.com/django-task-browser-app/'  
+    driver.get(url);
+    iframe = driver.find_elements_by_tag_name('iframe')
+    for frame in iframe:
+        print(frame.size)
+        print(frame.text)
+        print(frame.screenshot_as_png('/var/www/html/adsdetector'))
+    print(driver.title)
+    driver.quit()
+
+
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -49,4 +56,5 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver.close()
 
 if __name__ == "__main__":
+    main()
     unittest.main()
