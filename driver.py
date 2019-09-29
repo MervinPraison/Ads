@@ -1,9 +1,20 @@
+from flask import Flask
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import unittest
 from selenium.webdriver.common.keys import Keys
 import argparse
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+@app.route('/url/<url>')
+def api_url(url):
+    return 'You are reading ' + url
 
 def main():
     chrome_options = Options()
@@ -57,5 +68,6 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver.close()
 
 if __name__ == "__main__":
+    app.run()
     main()
     unittest.main()
