@@ -11,7 +11,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)  # Optional argument, if not specified will search path.
 driver.get('https://praison.com/django-task-browser-app/');
-iframe = driver.find_element_by_tag_name('iframe')
+iframe = driver.find_elements_by_tag_name('iframe')
 for frame in iframe:
     print(frame)
 print(driver.title)
