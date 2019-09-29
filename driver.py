@@ -14,6 +14,7 @@ driver.get('https://praison.com/django-task-browser-app/');
 iframe = driver.find_elements_by_tag_name('iframe')
 for frame in iframe:
     print(frame.size)
+    print(frame.text)
 print(driver.title)
 driver.quit()
 
