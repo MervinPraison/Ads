@@ -21,7 +21,9 @@ def hello_world():
 
 @app.route('/url/<url>')
 def api_url(url):
-    if not url:
+    if url:
+        url = "https://"+url
+    else:
         url = 'https://praison.com/django-task-browser-app/'  
     driver.get(url);
     iframe = driver.find_elements_by_tag_name('iframe')
