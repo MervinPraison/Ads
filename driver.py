@@ -30,7 +30,7 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
 
-        driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)   
+        self.driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)   
 
     def test_search_in_python_org(self):
         driver = self.driver
