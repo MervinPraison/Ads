@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 import unittest
 from selenium.webdriver.common.keys import Keys
 import argparse
+import json
 
 chrome_options = Options()
 chrome_options.add_argument("--disable-extensions")
@@ -27,13 +28,12 @@ def api_url(url):
         url = 'https://praison.com/django-task-browser-app/'  
     driver.get(url);
     iframe = driver.find_elements_by_tag_name('iframe')
+    frames = []
     for frame in iframe:
-        print(frame.size)
-        print(frame.text)
+        frames.append(url, driver.title, frame.size)
         # print(frame.screenshot_as_png('/var/www/html/adsdetector')) Option to save as PNG
-    print(driver.title)
     driver.quit()
-    return 'You are reading ' + url
+    return json.dumps(frames)
 
 def main():
     parser = argparse.ArgumentParser()
