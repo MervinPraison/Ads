@@ -20,11 +20,11 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/url/<path:url>/', methods=['GET', 'POST'])
-def api_url(url):
-    print(url)
-    if url:
-        url = "https://"+url
+@app.route('/url/<path:urlpath>', methods=['GET', 'POST'])
+def api_url(urlpath):
+    print(urlpath)
+    if urlpath:
+        url = "https://"+urlpath
     else:
         url = 'https://praison.com/django-task-browser-app/'  
     driver.get(url);
