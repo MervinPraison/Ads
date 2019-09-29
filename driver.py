@@ -7,11 +7,11 @@ from selenium.webdriver.common.keys import Keys
 import argparse
 
 chrome_options = Options()
-    chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)  # Optional argument, if not specified will search path.
+chrome_options.add_argument("--disable-extensions")
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)  # Optional argument, if not specified will search path.
 
 app = Flask(__name__)
 
