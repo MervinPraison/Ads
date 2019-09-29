@@ -15,6 +15,7 @@ iframe = driver.find_elements_by_tag_name('iframe')
 for frame in iframe:
     print(frame.size)
     print(frame.text)
+    frame.screenshot_as_png
 print(driver.title)
 driver.quit()
 
