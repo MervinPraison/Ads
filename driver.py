@@ -33,7 +33,7 @@ def api_url(urlpath):
     for frame in iframe:
         frames.append({"url":url, "title":driver.title, "size":frame.size})
         # print(frame.screenshot_as_png('/var/www/html/adsdetector')) Option to save as PNG
-    driver.quit()
+    #driver.quit()
     return json.dumps(frames)
 
 def main():
