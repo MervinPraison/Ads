@@ -6,6 +6,13 @@ import unittest
 from selenium.webdriver.common.keys import Keys
 import argparse
 
+chrome_options = Options()
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)  # Optional argument, if not specified will search path.
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,16 +21,19 @@ def hello_world():
 
 @app.route('/url/<url>')
 def api_url(url):
+    if not url:
+        url = 'https://praison.com/django-task-browser-app/'  
+    driver.get(url);
+    iframe = driver.find_elements_by_tag_name('iframe')
+    for frame in iframe:
+        print(frame.size)
+        print(frame.text)
+        # print(frame.screenshot_as_png('/var/www/html/adsdetector')) Option to save as PNG
+    print(driver.title)
+    driver.quit()
     return 'You are reading ' + url
 
 def main():
-    chrome_options = Options()
-    chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome('/usr/bin/chromedriver', options=chrome_options)  # Optional argument, if not specified will search path.
-    
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '--url', required=False, help="Please provide URL")
     args = parser.parse_args()
