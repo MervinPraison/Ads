@@ -23,7 +23,14 @@ from selenium.webdriver.common.keys import Keys
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
+        chrome_options = Options()
+        chrome_options.add_argument("--disable-extensions")
+
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+
+        driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)   
 
     def test_search_in_python_org(self):
         driver = self.driver
