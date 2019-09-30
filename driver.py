@@ -30,8 +30,9 @@ def api_url(urlpath):
     driver.get(url);
     iframe = driver.find_elements_by_tag_name('iframe')
     frames = []
+    frames.append({"url":url, "title":driver.title})
     for frame in iframe:
-        frames.append({"url":url, "title":driver.title, "size":frame.size})
+        frames.append([frame.size])
         # print(frame.screenshot_as_png('/var/www/html/adsdetector')) Option to save as PNG
     #driver.quit()
     return json.dumps(frames)
